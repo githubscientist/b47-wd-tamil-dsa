@@ -48,49 +48,34 @@ class LinkedList {
             this.head = newNode;
         }
     }
+
+    splice(index, deleteCount, value=null) {
+        if (index == 0 && deleteCount == 0 && value != null) {
+            // insert the value at the head
+            this.insertHead(value);
+        } else if (deleteCount == 0 && value != null) {
+            // insert the value at the specified index
+
+        }
+    }
 }
 
 // linked list creation
 let list = new LinkedList();
 
-// list.head = new Node(3);
-// list.head.next = new Node(5);
-// list.head.next.next = new Node(7);
-// list.head.next.next.next = new Node(9);
+// list.insertTail(3);
+// list.insertTail(5);
+// list.insertTail(6);
+// list.insertTail(7);
+// list.insertTail(8);
+// list.insertTail(9);
+// list.insertHead(2);
 
-list.insertTail(3);
-list.insertTail(5);
-list.insertTail(6);
-list.insertTail(7);
-list.insertTail(8);
-list.insertTail(9);
-list.insertHead(10);
+// list.splice(0, 0, 1);
+
+let array = [1, 2, 3, 4, 5, 6];
+for (let value of array) {
+    list.insertTail(value);
+}
 
 list.printList();
-
-
-/*
-    Stopping Condition: thead == null
-    Running Condition: thead != null
-
-    list = LinkedList {
-        head: Node {
-            data: 3,
-            next: Node {
-                data: 5,
-                next: Node {
-                    data: 7,
-                    next: null
-                }
-            }
-        }
-    }
-
-    Stopping Condition: Node.next == null
-    Running Condition: Node.next != null
-*/
-
-/*
-    
-
-*/
