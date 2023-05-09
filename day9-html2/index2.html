@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML & CSS - Day 2 - Continued</title>
+    </head>
+
+    <body>
+        <!-- Styles Precedence -->
+
+        <!-- 1. Inline
+        2. Internal
+        3. External
+
+        selectors
+
+        1. element selectors
+        2. id selectors
+        3. class selectors 
+    
+        Precedence Order:
+
+        1. Inline Styles
+        2. Internal Stylesheet
+        3. ID Selectors
+        4. Class Selectors
+        5. Element or Tag selectors
+        6. External stylesheets
+        7. Universal or global selector
+        -->
+
+        <!-- class & id -->
+        <!-- inline styles has higher priority than id selector and class selector -->
+        <!-- <h1 id="headingID" class="headingClass" style="color: yellow;">This is my heading</h1> -->
+        <!-- <h1 id="headingID"
+            class="headingClass"
+            style="color: yellow;">This is my heading</h1> -->
+
+        <!-- <div>
+            First DIV
+        </div>
+        <div>
+            First DIV
+        </div>
+        <div>
+            First DIV
+        </div> -->
+
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
+            width="100px"
+            id="firstImage">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+            width="100px">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+            width="100px">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+            width="100px">
+
+        <style>
+
+            * {
+                color: black;
+            }
+            /* #headingID {
+                color: blue;
+            } */
+
+            /* last style has the highest precedence */
+            /* this will override the existing style */
+            /* #headingID {
+                color: red;
+            } */
+            /* .headingClass {
+                color: red;
+            } */
+
+            /* ID selectors has the high priority than class selector */
+            #headingID {
+                color: blue;
+            }
+
+            .headingClass {
+                color: rgb(255, 0, 0);
+            }
+
+            /* least precedence */
+            h1 {
+                color: blueviolet !important;
+            }
+
+            div {
+                display: inline;
+            }
+
+            #firstImage {
+                display: block;
+            }
+        </style>
+
+    </body>
+</html>
