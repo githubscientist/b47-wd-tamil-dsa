@@ -7,8 +7,10 @@
     /* flex-direction: column-reverse;  */
     /* flex-wrap: wrap; */
     /* justify-content: space-between; */
-    /* align-content: center; */
-    /* height: 300px; */
+    /* align-content: center; */ /* vertical alignment - wrapping */ 
+    align-items: center; /* vertical alignment - no wrap */ 
+    justify-content: center; /* horizontal alignment of child elements */
+    height: 300px;
 }
 
 .green, .red, .blue {
@@ -19,18 +21,18 @@
 
 .green {
     background-color: green;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     order: 2;
 }
 
 .blue {
     background-color: blue;
-    flex-grow: 2;
+    /* flex-grow: 2; */
     order: 3;
 }
 
 .red {
     order: 1;
     background-color: red;
-    flex-grow: 3;
+    /* flex-grow: 3; */
 }
