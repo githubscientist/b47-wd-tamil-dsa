@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML & CSS - Day 4</title>
+        <style>
+            body {
+                padding: 20px;
+            }
+
+            .grandparent {
+                padding: inherit;
+                border: 3px solid blue;
+            }
+
+            .parent {
+                padding: inherit;
+                border: inherit;
+            }
+
+            .child {
+                padding: inherit;
+                border: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Parent Inherit</h2>
+        <!-- parent div -->
+        <div class="grandparent">
+            <p>This is the grandparent element</p>
+            <div class="parent">
+                <p>This is the parent element</p>
+                <!-- child div -->
+                <div class="child">
+                    <p>This is the child element</p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
