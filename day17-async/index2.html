@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label>Choose a country</label>
+        <select id="countries" onchange="populateStates()"></select>
+
+        <br />
+        <br />
+
+        <label>Choose a state</label>
+        <select id="states"></select>
+
+        <script>
+            let countries = {
+                'India': ['Tamilnadu', 'Kerala', 'Andhra Pradesh'], 
+                'United States': ['New York', 'Texas', 'California']
+            };
+
+            let countriesRef = document.getElementById('countries');
+
+            Object.keys(countries).forEach(country => {
+                let option = document.createElement('option');
+                option.value = country;
+                option.text = country;
+                countriesRef.appendChild(option);
+            });
+
+            function populateStates(){
+                // get the selected value from the country dropdown
+                let selectedCountry = countriesRef.value;
+
+                // get the ref of state dropdown
+                let statesRef = document.getElementById('states');
+                
+                statesRef.innerHTML = '';
+
+                let states = countries[selectedCountry];
+
+                states.forEach(state => {
+                    let option = document.createElement('option');
+
+                    option.text = state;
+                    option.value = state;
+
+                    statesRef.appendChild(option);
+                });
+            }
+        </script>
+    </body>
+</html>
