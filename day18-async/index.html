@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Promise States</title>
+    </head>
+    <body>
+        <p>A Promise can be in one of the three states</p>
+        <ol>
+            <li>Pending</li>
+            <li>Fulfilled</li>
+            <li>Rejected</li>
+        </ol>
+
+        <script>
+            let promise = new Promise((resolve, reject) => {
+                // let randomNumber = Math.random() * 10;
+
+                // if(randomNumber > 5){
+                //     resolve('success');
+                // } else {
+                //     reject('error');
+                // }
+
+                setTimeout(() => {
+                    reject('rejected');
+                }, 3000);
+            });
+
+            console.log(promise);
+            setTimeout(() => {
+                console.log(promise);
+            }, 4000);
+        </script>
+    </body>
+</html>

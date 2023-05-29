@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fetch</title>
+    </head>
+    <body>
+        <div>
+            <ul id="todoList">
+
+            </ul>
+        </div>
+
+        <script>
+            // fetch and XHR - XML Http Request
+            // making Http Requests
+            // XHR - traditional
+            // fetch - modern and simple syntax
+            // fetch('https://jsonplaceholder.typicode.com/todos/1', {method: 'GET'})
+            //     .then(response => response.json())
+            //     .then(data => console.log(data, typeof(data), data.completed));
+
+            // function fetchData(){
+            //     return fetch('https://jsonplaceholder.typicode.com/todos')
+            //         .then(response => response.json())
+            //         .then(data => data);
+            // }
+
+            // function createTodoList(){
+            //     // get the reference of the unordered list
+            //     let list = document.getElementById('todoList');
+
+            //     // fetch the todos from the api
+            //     fetchData()
+            //         .then(todoList => {
+            //             todoList.forEach(todo => {
+            //                 // create the list item
+            //                 let listItem = document.createElement('li');
+
+            //                 // set the content of the listItem
+            //                 listItem.textContent = todo.title;
+
+            //                 // append the list item to the list
+            //                 list.appendChild(listItem);
+            //             });
+            //         });
+            // }
+
+            // createTodoList();
+
+            function fetchData() {
+                    return fetch('https://jsonplaceholder.typicode.com/todos')
+                        .then(response => response.json())
+                        .then(data => data);
+                }
+
+                function createTodoList() {
+                    // get the reference of the unordered list
+                    let list = document.getElementById('todoList');
+
+                    // fetch the todos from the api
+                    fetchData()
+                        .then(todoList => {
+                            todoList.forEach(todo => {
+                                // create the list item
+                                let listItem = document.createElement('li');
+
+                                // set the content of the listItem
+                                listItem.textContent = todo.title;
+
+                                // append the list item to the list
+                                list.appendChild(listItem);
+                            });
+                        });
+                }
+
+                createTodoList();
+        </script>
+    </body>
+</html>
