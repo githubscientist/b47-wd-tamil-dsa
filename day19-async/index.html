@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Promise Chain</title>
+    </head>
+    <body>
+        <button onclick="fetchData()">Fetch Data</button>
+
+        <script>
+            // let userId = 1;
+
+            // function fetchData(){
+            //     getUserDetails(userId)
+            //         .then(user => getUserPosts(user.id))
+            //         .then(posts => getUserComments(posts[0].id))
+            //         .then(comments => console.log(comments));
+            // }
+
+            // function getUserDetails(userId){
+            //     return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+            //         .then(response => response.json())
+            //         .catch(error => console.error(error));
+            // }
+
+            // function getUserPosts(userId){
+            //     return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+            //         .then(response => response.json())
+            //         .catch(error => console.error(error));
+            // }
+
+            // function getUserComments(postId){
+            //     return fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+            //         .then(response => response.json())
+            //         .catch(error => console.error(error));
+            // }
+
+            /*
+                API Links:
+
+                Reference Guide: https://jsonplaceholder.typicode.com/guide/
+
+                Access all the Users: https://jsonplaceholder.typicode.com/users
+
+                Access a specific user: 
+                    https://jsonplaceholder.typicode.com/users/1
+                     https://jsonplaceholder.typicode.com/users/2
+                
+                Access all the posts: https://jsonplaceholder.typicode.com/posts
+
+                Access all the posts posted by a specific user:
+                    https://jsonplaceholder.typicode.com/posts?userId=1
+                    https://jsonplaceholder.typicode.com/posts?userId=2
+                
+                
+                Access all the comments:
+                    https://jsonplaceholder.typicode.com/comments
+
+                Access all the comments of a specific post:
+                    https://jsonplaceholder.typicode.com/comments?postId=1
+                    https://jsonplaceholder.typicode.com/comments?postId=2
+            */
+
+            async function fetchData(){
+                try {
+                    let userId = 1;
+
+                    let response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+                    console.log(response);
+                    let user = await response.json();
+
+                    let postsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+                    let posts = await postsResponse.json();
+
+                    let commentsResponse = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}`);
+                    let comments = await commentsResponse.json();
+
+                    console.log(comments[0]);
+
+                } catch(error){
+                    console.error('error fetching the data');
+                }
+            }
+        </script>
+    </body>
+</html>
