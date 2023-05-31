@@ -25,6 +25,23 @@
             <button type="submit">Create Post</button>
         </form>
 
+        <h2>Edit Post</h2>
+        <form style="display: none;" id="edit-post-form">
+            <input type="hidden" id="edit-post-id">
+            <label for="edit-title">Title: </label>
+            <input type="text" id="edit-title" required>
+
+            <br /><br />
+
+            <label for="edit-body">Body: </label>
+            <textarea id="edit-body" required></textarea>
+
+            <br /><br />
+
+            <button type="submit">Update</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        </form>
+
         <table id="posts-table">
             <thead>
                 <tr>
@@ -39,6 +56,8 @@
 
             </tbody>
         </table>
+
+        
         <script src="./script.js"></script>
     </body>
 </html>

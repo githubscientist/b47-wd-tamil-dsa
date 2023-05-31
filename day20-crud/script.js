@@ -1,3 +1,71 @@
+function deletePost(postId) {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+        method: 'DELETE'
+    })
+        .then(() => {
+            console.log('post deleted');
+            // getPosts();
+        });
+}
+
+function cancelEdit() {
+    let editPostForm = document.querySelector('#edit-post-form');
+    editPostForm.style.display = 'none';
+}
+
+function updatePost(event) {
+    event.preventDefault();
+
+    // get the details
+    let postId = document.querySelector('#edit-post-id').value;
+    let editTitleInput = document.querySelector('#edit-title').value;
+    let editBodyInput = document.querySelector('#edit-body').value;
+
+    // create an object
+    let updatedPost = {
+        title: editTitleInput,
+        body: editBodyInput
+    }
+
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+        method: 'PUT',
+        body: JSON.stringify(updatedPost),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json))
+        .then(() => {
+            cancelEdit();
+        });
+}
+
+function editPost(postId) {
+    // make a request to get the post details based on the id clicked
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+        .then(response => response.json())
+        .then(post => {
+            // select the edit form
+            let editForm = document.querySelector('#edit-post-form');
+            let editTitleInput = document.querySelector('#edit-title');
+            let editBodyInput = document.querySelector('#edit-body');
+            let editPostID = document.querySelector('#edit-post-id');
+
+            // display the form
+            editForm.style.display = 'block';
+
+            // set the values of the form elements from the api call data
+            editTitleInput.value = post.title;
+            editBodyInput.value = post.body;
+            editPostID.value = post.id;
+        });
+}
+
+// get the references of the form update
+let editPostForm = document.querySelector('#edit-post-form');
+editPostForm.addEventListener('submit', updatePost);
+
 function getPosts() {
     fetch('https://jsonplaceholder.typicode.com/posts/')
         .then(response => response.json())
