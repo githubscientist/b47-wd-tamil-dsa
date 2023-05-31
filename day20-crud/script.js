@@ -27,6 +27,7 @@ function updatePost(event) {
         body: editBodyInput
     }
 
+    // make the api call
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
         method: 'PUT',
         body: JSON.stringify(updatedPost),
