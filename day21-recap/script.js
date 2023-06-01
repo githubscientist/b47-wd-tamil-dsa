@@ -44,6 +44,46 @@ async function getmeaning(word) {
 
         // append the created paragraph to the wordInfo
         wordInfo.appendChild(paragraph);
+
+        // create a list
+        let list = document.createElement('ul');
+        list.style.listStyleType = 'none';
+
+        let meanings = data[0].meanings;
+
+        for (let meaning of meanings) {
+            // create a list item
+            let listItem = document.createElement('li');
+
+            // set the content of the list item
+            listItem.innerHTML = `${meaning.partOfSpeech}`;
+
+            // create a sublist to display the meanings in every 
+            // category
+            let subList = document.createElement('ul');
+            subList.style.listStyleType = 'disc';
+
+            // get the definitions
+            let definitions = meaning.definitions;
+
+            for (let definition of definitions) {
+                // create a list item
+                let subListItem = document.createElement('li');
+
+                // set the content of the list item
+                subListItem.innerHTML = `<em>${definition.definition}</em>`;
+
+                // append the list item to the list
+                subList.appendChild(subListItem);
+            }
+
+            listItem.appendChild(subList);
+            // append the list item to the list
+            list.appendChild(listItem);
+        }
+
+        wordInfo.appendChild(list);
+
     } catch (error) {
         console.error('error fetching the meaning of the word');
     }
