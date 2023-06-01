@@ -39,11 +39,23 @@ async function getmeaning(word) {
         // reset the wordInfo
         wordInfo.innerHTML = '';
 
+        // get the audio data
+        let audioSource = data[0].phonetics[0].audio;
+
         // set the content of the paragraph element
-        paragraph.innerHTML = `Word: <b>${data[0].word}</b>`;
+        paragraph.innerHTML = `
+        <span class='fas fa-volume-up audio-icon'></span>
+        <audio class='audio'>
+            <source src=${audioSource} type='audio/mpeg'>
+        </audio>
+        Word: <b>${data[0].word}</b>`;
 
         // append the created paragraph to the wordInfo
         wordInfo.appendChild(paragraph);
+
+        document.querySelector('.audio-icon').addEventListener('click', event => {
+            document.querySelector('.audio').play();
+        });
 
         // create a list
         let list = document.createElement('ul');
