@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="new">
+            
+        </div>
+
+        <h1 id="header"></h1>
+
+        <script>
+            function clickHandler(){
+                let header = document.getElementById('header');
+                header.innerHTML = `div clicked`;
+            }
+
+            let newdiv = document.querySelector('.new');
+
+            newdiv.innerHTML = `<p>Hello World</p>`;
+
+            newdiv.addEventListener('click', clickHandler);
+        </script>
+    </body>
+</html>
