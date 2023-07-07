@@ -1,0 +1,81 @@
+Exercise: Design a database for an online bookstore.
+
+- The bookstore sells books, and each book can belong to multiple genres.
+- Customers can place orders, and each order can contain multiple books.
+- Each customer can have multiple addresses.
+- An address can be associated with multiple customers.
+- Each book has multiple authors.
+- An author can write multiple books.
+
+Identify the tables with the entities.
+
+List of Tables:
+    1. Book Table
+    2. Genre Table
+    3. Author Table
+    4. Customer Table
+    5. Address Table
+    6. Order Table
+    
+Relationships:
+
+    1. Book_Genre Table (many-to-many relationship)
+    2. Book_Author Table (many-to-many relationship)
+    3. Customer_Address Table (many-to-many relationship)
+    4. Order_Book Table (many-to-many relationship)
+
+List of Tables and their entities: 
+    1. Book Table
+        - bookID (primary key)
+        - title
+        - ISBN
+        - price
+        - publicationDate
+
+    2. Genre Table
+        - genreID (primary key)
+        - genreName
+
+    3. Author Table
+        - authorID (primary key)
+        - authorName
+
+    4. Customer Table
+        - customerID (primary key)
+        - customerName
+        - customerEmail
+        - customerPhone
+
+    5. Address Table
+        - addressID (primary key)
+        - customerID (foreign key referencing customer table)
+        - addressLine1
+        - addressLine2
+        - city
+        - state
+        - postalcode
+        - country
+
+    6. Order Table
+        - orderID (primary key)
+        - customerID (foreign key referencing customer table)
+        - orderDate
+
+    7. Book_Genre Table (many-to-many relationship)
+        - bookID (foreign key referencing book table)
+        - genreID (foreign key referencing genre table)
+
+    2. Book_Author Table (many-to-many relationship)
+        - bookID (foreign key referencing book table)
+        - authorID (foreign key referncing author table)
+
+    3. Customer_Address Table (many-to-many relationship)
+        - customerID (foreign key referencing customer table)
+        - addressID (foreign key referencing address table)
+        
+    4. Order_Book Table (many-to-many relationship)
+        - orderID (foreign key referencing order table)
+        - bookID (foreign key referencing book table)
+
+
+Question: Which books belong to the 'Comedy' Genre ?
